@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/css/Stylelogin.css}"></link>
+</head>
+<body>
+    <div class="login_container">
+        <div class="login_box">
+            <h1>Iniciar Sesión</h1>
+            <form th:action="@{/login}" method="post">
+                <div class="user_">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required/>
+                </div>
+                <div class="password_">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required/>
+                </div>
+                <div th:if="${error}" class="error_message">
+                    <p th:if="${error.contains('user')}">
+                        Usuario no encontrado. Por favor, verifica tu nombre de usuario.
+                    </p>
+                    <p th:if="${error.contains('password')}">
+                        Contraseña incorrecta. Intenta de nuevo.
+                    </p>
+                </div>
+                <button type="submit" class="login_button">Iniciar sesión</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

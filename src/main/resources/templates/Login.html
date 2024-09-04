@@ -24,6 +24,9 @@
                     <p th:if="${error.contains('password')}">
                         Contraseña incorrecta. Intenta de nuevo.
                     </p>
+                    <p th:if="${error.contains('mayus')}">
+                        El usuario no puede contener mayúsculas
+                    </p>
                 </div>
                 <button type="submit" class="login_button">Iniciar sesión</button>
             </form>

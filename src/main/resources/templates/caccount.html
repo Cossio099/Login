@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/src/main/resources/static/css/Stylehome.css">
+<head>
+    <title>Inicio</title>
+</head>
+<body>
+    <h1>Bienvenido, administrador!</h1>
+    <form th:action="@{/logout}" method="POST">
+        <button type="submit" class="logout-button">Cerrar sesión</button>
+    </form>
+</body>
+</html>

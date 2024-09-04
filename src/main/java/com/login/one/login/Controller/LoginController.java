@@ -29,6 +29,12 @@ public class LoginController {
     @PostMapping("/login")
     public String loggins(@RequestParam String username, @RequestParam String password, Model model){
         LoginsEntity login = loginsService.findByUsername(username);
+
+        if (!username.equals(username.toLowerCase())) {
+            model.addAttribute("error", "mayus");
+            return "login";
+        }
+
         if(login !=null){
             if(login.getPassword().equals(password)){
                 UsersEntity user = login.getUsersEntity();
@@ -37,7 +43,11 @@ public class LoginController {
                 model.addAttribute("name", client.getName());
                 model.addAttribute("last_name", client.getLast_name());
                 model.addAttribute("username", username);
-                return "home";
+                if (user.getType_user().equalsIgnoreCase("administrador")) {
+                    return "caccount";
+                } else {
+                    return "home";
+                }
             } else{
                 model.addAttribute("error", "password");
             }
